@@ -6,13 +6,15 @@ dotenv.config({path: "./config.env"})
 
 //replace mongodb connectoin string
 const DB = process.env.DATABASE.replace("<password>", process.env.DATABASE_PASSWORD)
-
+mongoose.set('strictQuery', false)
 mongoose.connect(DB, {
-    useNewUrlParser: true 
+   
 })
 .then(con =>{
     console.log("Database Connected Sucessfully ...")
 })
+
+
 
 const PORT = 3000 || process.env.PORT
 app.listen(PORT, () => {
